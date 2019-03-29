@@ -1,4 +1,3 @@
-import cv2
-
-cv2.__version__
-'3.4.3'
+python沒有安裝成功
+打在pi2裡面再傳過來但windows開不起來檔案
+只好先傳txt.檔
