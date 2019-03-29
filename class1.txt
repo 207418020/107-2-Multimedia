@@ -1,0 +1,26 @@
+import cv2
+cv2.__version__
+'3.4.3'
+import sys
+from google.colab import drive
+drive.mount('/content/drive')
+
+Drive already mounted at /content/drive; to attempt to forcibly remount, call drive.mount("/content/drive", force_remount=True).
+from matplotlib import pyplot as plt
+!ls /content/drive/My\ Drive/107-2Multimedia
+207418020.jpg koala.jpg
+In [0]:
+from matplotlib import pyplot as plt
+if __name__ =="__main__":
+  if len(sys.argv)>1:
+    image = cv2.imread('/content/drive/My Drive/107-2Multimedia/k.jpg', cv2.IMREAD_ANYCOLOR)
+    image = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)#
+  else:
+    print("Usge:python firstOpenCV3.py imageFile")
+  #cv2.imshow("image",image)
+  #cv2.waitKey(0)
+  #cv2.destroyAllWindows()
+  plt.imshow(image)
+  plt.show()
+image.shape
+(575, 461, 3)
