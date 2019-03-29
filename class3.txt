@@ -1,0 +1,68 @@
+import sys
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
+from google.colab import drive
+drive.mount('/content/drive')
+
+image1 = cv2.imread('/content/drive/My Drive/107-2Multimedia/207418020.jpg', cv2.IMREAD_GRAYSCALE)
+gray = cv2.cvtColor(image1, cv2.COLOR_BGR2GRAY)
+plt.imshow(gray,cmap='gray')
+
+<matplotlib.image.AxesImage at 0x18c7f33d630>
+
+image2 = cv2.imread('/content/drive/My Drive/107-2Multimedia/207418020.jpg', cv2.IMREAD_COLOR)
+plt.imshow(cv2.cvtColor(image2,cv2.COLOR_BGR2RGB))
+
+<matplotlib.image.AxesImage at 0x18c7f540cc0>
+
+image3 = cv2.imread('/content/drive/My Drive/107-2Multimedia/207418020.jpg', cv2.IMREAD_UNCHANGED)
+
+plt.imshow(image3)
+
+<matplotlib.image.AxesImage at 0x18c7f6307f0>
+
+image4 = cv2.imread('/content/drive/My Drive/107-2Multimedia/207418020.jpg',0)
+
+plt.imshow(image4)
+plt.title('invert')
+plt.xticks([])
+plt.yticks([])
+plt.show
+
+<function matplotlib.pyplot.show>
+
+image5 = cv2.imread('/content/drive/My Drive/107-2Multimedia/207418020.jpg')
+gray = cv2.cvtColor(image5, cv2.COLOR_BGR2GRAY)
+gray
+
+array([[ 178,  178,  175, ..., 114, 114, 113],
+       [ 182,  177,  178, ..., 115, 114, 114],
+       [ 177,  179,  176, ..., 115, 114, 114],
+       ...,
+       [ 160,  164,  169, ..., 145, 145, 145],
+       [ 163,  166,  171, ..., 145, 145, 146],
+       [ 164,  166,  171, ..., 146, 145, 145]], dtype=uint8)
+
+plt.imshow(gray,cmap='gray')
+plt.title('gray')
+plt.xticks([])
+plt.yticks([])
+plt.show
+
+<function matplotlib.pyplot.show>
+image6 = cv2.imread('/content/drive/My Drive/107-2Multimedia/207418020.jpg')
+b,g,r = cv2.split(image6)
+img = cv2.merge((r,g,b))
+plt.imshow(img)
+plt.title('color')
+plt.xticks([])
+plt.yticks([])
+plt.show
+
+<function matplotlib.pyplot.show>
+b,g,r = cv2.split(image1)
+img = cv2.merge((r,g,b))
+plt.imshow(img)
+
+<matplotlib.image.AxesImage at 0x18c7f6e8668>
