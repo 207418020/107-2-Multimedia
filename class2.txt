@@ -1,0 +1,193 @@
+import numpy as np
+#https://zh.wikipedia.org/wiki/NumPy
+x = np.array([1,2,3])
+x
+array([1, 2, 3])
+y = np.arange(10)
+y
+array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+a = np.array([1,3,6,9])
+b = np.linspace(0,15,4) #https://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html
+b
+array([ 0.,  5., 10., 15.])
+c = a-b
+c
+array([ 1., -2., -4., -6.])
+a**2
+array([ 1,  9, 36, 81])
+a = np.array([[1,2,3],[4,5,6],[7,8,9]])
+a.transpose()
+array([[1, 4, 7],
+       [2, 5, 8],
+       [3, 6, 9]])
+np.linalg.inv(a)
+#https://www.smwenku.com/a/5b8d7e462b717718833e68ed
+#https://matrixcalc.org/zh/
+---------------------------------------------------------------------------
+LinAlgError                               Traceback (most recent call last)
+<ipython-input-8-1e7288618faf> in <module>()
+----> 1 np.linalg.inv(a)
+      2 #https://www.smwenku.com/a/5b8d7e462b717718833e68ed
+      3 #https://matrixcalc.org/zh/
+
+/usr/local/lib/python3.6/dist-packages/numpy/linalg/linalg.py in inv(a)
+    526     signature = 'D->D' if isComplexType(t) else 'd->d'
+    527     extobj = get_linalg_error_extobj(_raise_linalgerror_singular)
+--> 528     ainv = _umath_linalg.inv(a, signature=signature, extobj=extobj)
+    529     return wrap(ainv.astype(result_t, copy=False))
+    530 
+
+/usr/local/lib/python3.6/dist-packages/numpy/linalg/linalg.py in _raise_linalgerror_singular(err, flag)
+     87 
+     88 def _raise_linalgerror_singular(err, flag):
+---> 89     raise LinAlgError("Singular matrix")
+     90 
+     91 def _raise_linalgerror_nonposdef(err, flag):
+
+LinAlgError: Singular matrix
+a2= np.array([[1., 2.], [3., 4.]])
+np.linalg.inv(a2)
+array([[-2. ,  1. ],
+       [ 1.5, -0.5]])
+#https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.solve.html
+#https://ipreacher.github.io/2017/common-symbolic-calculations/
+a3 = np.array([[3,1], [1,2]])
+b = np.array([9,8])
+#3 * x0 + x1 = 9
+#x0 + 2 * x1 = 8
+x = np.linalg.solve(a3, b)
+x
+# b.shape
+array([2., 3.])
+c = np.random.rand(3,3)
+c
+array([[0.87852865, 0.17307766, 0.21966036],
+       [0.24377336, 0.61113735, 0.75289122],
+       [0.70043998, 0.43421614, 0.29271892]])
+np.dot(a,c)
+array([[ 3.46739532,  2.69800077,  2.60359957],
+       [ 8.93562131,  6.3532942 ,  6.39941108],
+       [14.4038473 , 10.00858763, 10.19522259]])
+z = np.zeros((2,4),np.uint8)
+type(z)
+numpy.ndarray
+z
+array([[0, 0, 0, 0],
+       [0, 0, 0, 0]], dtype=uint8)
+o = np.ones((2,4),np.int32)
+o
+array([[1, 1, 1, 1],
+       [1, 1, 1, 1]], dtype=int32)
+m = np.array([[4,12,3,1],[10,12,14,29]],np.float32)
+m
+array([[ 4., 12.,  3.,  1.],
+       [10., 12., 14., 29.]], dtype=float32)
+m.shape
+(2, 4)
+m.dtype
+dtype('float32')
+m = np.array([[[1,2,3,4],[5,6,7,8]],[[10,11,12,14],[15,16,17,18]]],np.float32)
+m
+array([[[ 1.,  2.,  3.,  4.],
+        [ 5.,  6.,  7.,  8.]],
+
+       [[10., 11., 12., 14.],
+        [15., 16., 17., 18.]]], dtype=float32)
+m = np.array([[14,12,3,1],[10,12,114,29],[67,23,534,2]],np.float32)
+m[1,3]
+29.0
+m[2,:]
+array([ 67.,  23., 534.,   2.], dtype=float32)
+m[:,3]
+array([ 1., 29.,  2.], dtype=float32)
+m[0:2,1:3]
+array([[ 12.,   3.],
+       [ 12., 114.]], dtype=float32)
+m = np.array([[[1,2,3,4],[5,6,7,8]],[[10,11,12,14],[15,16,17,18]],[[11,12,43,32],[1,5,10,23]]],np.float32)
+m
+array([[[ 1.,  2.,  3.,  4.],
+        [ 5.,  6.,  7.,  8.]],
+
+       [[10., 11., 12., 14.],
+        [15., 16., 17., 18.]],
+
+       [[11., 12., 43., 32.],
+        [ 1.,  5., 10., 23.]]], dtype=float32)
+m[:,:,0]
+# dimension*w*l
+array([[ 1.,  5.],
+       [10., 15.],
+       [11.,  1.]], dtype=float32)
+#m[:,:,0].shape
+m[0,:,:]
+array([[1., 2., 3., 4.],
+       [5., 6., 7., 8.]], dtype=float32)
+src1 = np.array([[23,123,90],[100,250,0]],np.uint8)
+src2 = np.array([[125,150,60],[100,10,40]],np.uint8)
+dst = src1 + src2
+dst
+array([[148,  17, 150],
+       [200,   4,  40]], dtype=uint8)
+src2 = np.array([[125,150,60],[100,10,40]],np.float32)
+dst = src1 + src2
+dst
+array([[148., 273., 150.],
+       [200., 260.,  40.]], dtype=float32)
+import cv2
+dst = cv2.add(src1, src2, dtype=cv2.CV_32F)
+dst
+array([[148., 273., 150.],
+       [200., 260.,  40.]], dtype=float32)
+src2 = np.array([[125,150,60],[100,10,40]],np.uint8)
+dst = src1 - src2
+dst
+array([[154, 229,  30],
+       [  0, 240, 216]], dtype=uint8)
+src2 = np.array([[125,150,60],[100,10,40]],np.float32)
+dst = src1 * src2
+dst
+array([[ 2875., 18450.,  5400.],
+       [10000.,  2500.,     0.]], dtype=float32)
+dst = np.multiply(src1, src2)
+dst
+array([[ 2875., 18450.,  5400.],
+       [10000.,  2500.,     0.]], dtype=float32)
+src2 = np.array([[125,150,60],[100,10,40]],np.uint8)
+dst = src2 / src1
+dst
+/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:2: RuntimeWarning: divide by zero encountered in true_divide
+  
+array([[5.43478261, 1.2195122 , 0.66666667],
+       [1.        , 0.04      ,        inf]])
+3/2
+1.5
+src2 = np.array([[125,150,60],[100,10,40]],np.float32)
+dst = src2 / src1
+dst
+/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:2: RuntimeWarning: divide by zero encountered in true_divide
+array([[5.4347825, 1.2195122, 0.6666667],
+       [1.       , 0.04     ,       inf]], dtype=float32)
+src3 = np.array([[1,2,3],[4,5,6]],np.uint8)
+src4 = np.array([[6,5],[4,3],[2,1]],np.uint8)
+dst = np.dot(src3, src4)
+dst
+array([[20, 14],
+       [56, 41]], dtype=uint8)
+src5 = np.array([[6,5],[4,3]],np.uint8)
+dst2 = np.log(src5)
+dst2.dtype
+dtype('float16')
+dst2
+array([[1.792, 1.609],
+       [1.387, 1.099]], dtype=float16)
+src = np.array([[30,40],[10,100]],np.uint8)
+dst1 = np.power(src,2)
+dst1
+array([[132,  64],
+       [100,  16]], dtype=uint8)
+dst2 = np.power(src, 2.0)
+dst2
+array([[  900.,  1600.],
+       [  100., 10000.]])
+dst2.dtype
+dtype('float64')
